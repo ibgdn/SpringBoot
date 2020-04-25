@@ -1,0 +1,18 @@
+server:
+  port: 39033
+  servlet:
+    context-path: /ice
+redis:
+  port: 6379
+  hosts:
+    - 192.168.1.108
+    - 192.168.1.109
+    - 192.168.1.110
+    - 192.168.1.111
+  redisList:
+    - port: 6380
+      host: 192.168.2.108
+    - port: 6380
+      host: 192.168.2.109
+    - port: 6380
+      host: 192.168.2.110
