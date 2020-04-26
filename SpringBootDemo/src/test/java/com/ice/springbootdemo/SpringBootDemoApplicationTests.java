@@ -1,7 +1,7 @@
-package com.ice.SpringBootDemo;
+package com.ice.springbootdemo;
 
-import com.ice.SpringBootDemo.properties.Book;
-import com.ice.SpringBootDemo.yaml.RedisCluster;
+import com.ice.springbootdemo.properties.Book;
+import com.ice.springbootdemo.yaml.RedisCluster;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

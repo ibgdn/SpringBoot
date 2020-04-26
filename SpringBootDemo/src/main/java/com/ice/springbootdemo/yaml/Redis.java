@@ -1,4 +1,4 @@
-package com.ice.SpringBootDemo.yaml;
+package com.ice.springbootdemo.yaml;
 
 /**
  * yaml 对象注入
