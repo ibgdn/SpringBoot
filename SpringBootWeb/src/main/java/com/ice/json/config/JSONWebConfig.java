@@ -1,7 +1,7 @@
 package com.ice.json.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.scene.input.DataFormat;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import javafx.scene.input.DataFormat;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -13,12 +13,14 @@ import java.text.SimpleDateFormat;
  */
 @Configuration
 public class JSONWebConfig {
+/*
+    // JSon 放开，GSon 注释
     @Bean
     MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
         // 编码格式推荐使用（会覆盖ObjectMapper）
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         ObjectMapper mapper = new ObjectMapper();
-        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM/dd"));
+        mapper.setDateFormat(new SimpleDateFormat("yyyy/MM/dd"));
         converter.setObjectMapper(mapper);
         return converter;
     }
@@ -30,4 +32,5 @@ public class JSONWebConfig {
         mapper.setDateFormat(new SimpleDateFormat("yyyy`MM`dd"));
         return mapper;
     }
+*/
 }

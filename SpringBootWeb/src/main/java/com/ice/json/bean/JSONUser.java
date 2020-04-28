@@ -1,6 +1,7 @@
 package com.ice.json.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+// JSon 依赖类
+//import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
