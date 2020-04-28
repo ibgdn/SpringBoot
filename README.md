@@ -49,8 +49,27 @@ afterCompletion
 
 - ## SpringBootDemo
 
-SpringBoot 示例项目 2.2.6。
+SpringBoot 示例项目 版本2.2.6。
+
+整合 freemarker、thymeleaf、jsp 的示例项目。
 
 启动项目查看效果访问地址： `ip:port/hello` 
 
 在 src\main\resources\banner.txt 文件中修改字符，即可配置自定义 banner。
+
+整合 freemarker 视图访问地址：`ip:port/dev/user`
+
+
+
+- ## SpringBootWeb
+
+SpringBoot 示例项目 版本2.2.6。
+
+整合 web 开发技术的示例项目。
+
+JSON 时间格式，关键配置文件 `JSONWebConfig.java`访问地址：`ip:port/JSONUser`
+
+GSON 时间格式，关键配置文件 `GSONWebConfig.java`访问地址：`ip:port/JSONUser`
+
+FastJSON 时间格式，关键配置文件 `FastJSONWebConfig.java`访问地址：`ip:port/JSONUser`
+
