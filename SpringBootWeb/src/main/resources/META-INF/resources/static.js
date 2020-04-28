@@ -1,1 +1,1 @@
-META-INF.resource resource.
+META-INF.resources resource.
