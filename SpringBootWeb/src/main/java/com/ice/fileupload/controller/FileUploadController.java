@@ -20,6 +20,7 @@ import java.util.UUID;
 public class FileUploadController {
     @PostMapping("/upload")
     public String upload(MultipartFile file, HttpServletRequest request) {
+        // 形参 file 需与前端名称相同
         // 旧文件名
         String oldFileName = file.getOriginalFilename();
         // 创建新文件路径及文件名

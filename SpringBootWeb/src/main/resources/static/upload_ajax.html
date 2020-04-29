@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload_ajax</title>
+    <!--引入文件一定要写成闭区间</script>-->
+    <script src="jquery-3.5.0.min.js"></script>
+</head>
+<body>
+<div id="result"/>
+<input type="file" id="file">
+<input type="button" value="提交" onclick="upload_ajax()">
+<script>
+    function upload_ajax() {
+        var file = $('#file')[0].files[0];
+        var formData = new FormData();
+        /*"file" 需与后台形参相同*/
+        formData.append("file", file);
+        $.ajax({
+            type: 'post',
+            url: '/upload',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (msg) {
+                $('#result').html(msg);
+            }
+        })
+    }
+</script>
+</body>
+</html>
