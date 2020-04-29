@@ -14,7 +14,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * 6.Spring Boot文件上传
+ * 6.Spring Boot文件上传 "/upload"
+ * 8.Spring Boot 多文件上传 "/uploads"
  */
 @RestController
 public class FileUploadController {
@@ -41,5 +42,29 @@ public class FileUploadController {
             e.printStackTrace();
         }
         return "error";
+    }
+
+    @PostMapping(value = "/uploads")
+    public String uploads(MultipartFile[] files, HttpServletRequest request) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("/yy/MM/dd");
+        String format = simpleDateFormat.format(new Date());
+        String filePath = request.getServletContext().getRealPath("/img") + format;
+        File newFilePath = new File(filePath);
+        if (!newFilePath.exists()) {
+            newFilePath.mkdirs();
+        }
+        for (MultipartFile file : files) {
+            String oldFileName = file.getOriginalFilename();
+            String newFileName = UUID.randomUUID().toString() + oldFileName.substring(oldFileName.lastIndexOf("."));
+            try {
+                file.transferTo(new File(newFilePath, newFileName));
+                System.out.println("url: " + request.getScheme() + "://"
+                        + request.getServerName() + ":" + request.getServerPort() + "/img" + format + newFileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return "success";
     }
 }
