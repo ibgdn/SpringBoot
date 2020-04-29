@@ -73,3 +73,10 @@ GSON 时间格式，关键配置文件 `GSONWebConfig.java`访问地址：`ip:po
 
 FastJSON 时间格式，关键配置文件 `FastJSONWebConfig.java`访问地址：`ip:port/JSONUser`
 
+静态资源访问地址：`ip:port/static.js`
+
+文件上传访问地址：`ip:port/upload.html`
+
+Ajax 文件上传访问地址：`ip:port/upload_ajax.html`
+
+多文件上传访问地址：`ip:port/upload_mult.html`
