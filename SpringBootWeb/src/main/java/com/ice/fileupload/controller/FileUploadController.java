@@ -19,13 +19,13 @@ import java.util.UUID;
  */
 @RestController
 public class FileUploadController {
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("/yy/MM/dd/");
     @PostMapping("/upload")
     public String upload(MultipartFile file, HttpServletRequest request) {
         // 形参 file 需与前端名称相同
         // 旧文件名
         String oldFileName = file.getOriginalFilename();
         // 创建新文件路径及文件名
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("/yy/MM/dd");
         String format = simpleDateFormat.format(new Date());
         String filePath = request.getServletContext().getRealPath("/img") + format;
         File newFilePath = new File(filePath);
@@ -46,7 +46,6 @@ public class FileUploadController {
 
     @PostMapping(value = "/uploads")
     public String uploads(MultipartFile[] files, HttpServletRequest request) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("/yy/MM/dd");
         String format = simpleDateFormat.format(new Date());
         String filePath = request.getServletContext().getRealPath("/img") + format;
         File newFilePath = new File(filePath);
