@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>customError</title>
+</head>
+<body>
+<h2>customError.html</h2>
+<table border="2">
+    <tr>
+        <td>path</td>
+        <td th:text="${path}"/>
+    </tr>
+    <tr>
+        <td>timestamp</td>
+        <td th:text="${timestamp}"/>
+    </tr>
+    <tr>
+        <td>message</td>
+        <td th:text="${message}"/>
+    </tr>
+    <tr>
+        <td>error</td>
+        <td th:text="${error}"/>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td th:text="${status}"/>
+    </tr>
+    <tr>
+        <td>CustomError</td>
+        <td th:text="${CustomError}"/>
+    </tr>
+</table>
+</body>
+</html>
