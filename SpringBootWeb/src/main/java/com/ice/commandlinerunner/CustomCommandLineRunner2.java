@@ -15,6 +15,6 @@ import org.springframework.stereotype.Component;
 public class CustomCommandLineRunner2 implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("CustomCommandLineRunner2");
+        System.out.println("CustomCommandLineRunner2: " + args + ".");
     }
 }
