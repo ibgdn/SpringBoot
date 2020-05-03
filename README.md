@@ -80,3 +80,7 @@ FastJSON 时间格式，关键配置文件 `FastJSONWebConfig.java`访问地址�
 Ajax 文件上传访问地址：`ip:port/upload_ajax.html`
 
 多文件上传访问地址：`ip:port/upload_mult.html`
+
+ControllerAdvice 定制全局异常（添加上传文件大小限制）：`ip:port/upload.html`
+
+CORS 访问地址：`ip:port/CORS.html`
