@@ -12,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class InterceptorWebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getCustomIntgerceptor()).addPathPatterns("/**");
+        registry.addInterceptor(getCustomInterceptor()).addPathPatterns("/**");
     }
 
     @Bean
-    CustomInterceptor getCustomIntgerceptor() {
+    CustomInterceptor getCustomInterceptor() {
         return new CustomInterceptor();
     }
 }
