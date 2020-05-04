@@ -84,3 +84,15 @@ Ajax 文件上传访问地址：`ip:port/upload_ajax.html`
 ControllerAdvice 定制全局异常（添加上传文件大小限制）：`ip:port/upload.html`
 
 CORS 访问地址：`ip:port/CORS.html`
+
+加载 XML 配置文件单元测试方法：com.ice.SpringBootWebApplicationTests#contextLoads
+
+注册拦截器访问地址：`ip:port/getGlobalData`
+
+整合 Web 基础组件（Servlet、Filter、Listener）访问地址：`ip:port/customServlet`
+
+路径映射访问地址：`ip:port/pathMapping` 和`ip:port/pathMapping1`
+
+类型转换访问地址：`ip:port/parameterConverter?birth=2020-2-3`
+
+AOP 访问地址：`ip:port/aopGet`
