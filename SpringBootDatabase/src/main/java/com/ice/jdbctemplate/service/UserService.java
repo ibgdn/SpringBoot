@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 2.Spring Boot 整合 JdbcTemplate
  */
-@Service
+//@Service
 public class UserService {
     @Autowired
     JdbcTemplate jdbcTemplate;
