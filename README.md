@@ -55,7 +55,7 @@ SpringBoot 示例项目 版本2.2.6。
 
 启动项目查看效果访问地址： `ip:port/hello` 
 
-在 src\main\resources\banner.txt 文件中修改字符，即可配置自定义 banner。
+在 `src\main\resources\banner.txt` 文件中修改字符，即可配置自定义 banner。
 
 整合 freemarker 视图访问地址：`ip:port/dev/user`
 
@@ -85,7 +85,7 @@ ControllerAdvice 定制全局异常（添加上传文件大小限制）：`ip:po
 
 CORS 访问地址：`ip:port/CORS.html`
 
-加载 XML 配置文件单元测试方法：com.ice.SpringBootWebApplicationTests#contextLoads
+加载 XML 配置文件单元测试方法：`com.ice.SpringBootWebApplicationTests#contextLoads`
 
 注册拦截器访问地址：`ip:port/getGlobalData`
 
@@ -96,3 +96,23 @@ CORS 访问地址：`ip:port/CORS.html`
 类型转换访问地址：`ip:port/parameterConverter?birth=2020-2-3`
 
 AOP 访问地址：`ip:port/aopGet`
+
+
+
+- ## SpringBootWeb
+
+JdbcTemplate 
+
+单一数据源测试类：`SpringBootDatabase/src/test/java/com/ice/JdbcTemplateOneDataSource.java`
+
+多数据源测试类：`SpringBootDatabase/src/test/java/com/ice/JdbcTemplateMoreDataSource.java`
+
+
+
+- ## SpringBootMybatis
+
+mybatis
+
+单一数据源测试类：`SpringBootDatabase/src/test/java/com/ice/SpringBootDatabaseApplicationTests.java`
+
+多数据源测试类：`SpringBootMybatis/src/test/java/com/ice/MybatisMoreDataSource.java`
