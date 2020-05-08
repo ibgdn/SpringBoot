@@ -19,4 +19,13 @@ public class JPACustomTest {
         Book bookByIdMax = bookDao.findBookByIdMax();
         System.out.println(bookByIdMax);
     }
+
+    @Test
+    void addBook() {
+        Integer addBook1 = bookDao.addBook1("go", "golong");
+        System.out.println("addBook1: " + addBook1);
+        Integer addBook2 = bookDao.addBook2("Lisp", "L");
+        System.out.println("addBook2: " + addBook2);
+
+    }
 }
