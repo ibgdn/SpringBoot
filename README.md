@@ -116,3 +116,12 @@ mybatis
 单一数据源测试类：`SpringBootDatabase/src/test/java/com/ice/SpringBootDatabaseApplicationTests.java`
 
 多数据源测试类：`SpringBootMybatis/src/test/java/com/ice/MybatisMoreDataSource.java`
+
+- ## SpringBootJPA
+
+JPA
+
+单一数据源测试类：`SpringBootJPA/src/test/java/com/ice/JPABookDaoTests.java`、`JPAKeyWordTest.java `、`JPACustomTest.java`、`JPACustomTest.java`
+
+多数据源测试类：`SpringBootMybatis/src/test/java/com/ice/MybatisMoreDataSource.java`
+
