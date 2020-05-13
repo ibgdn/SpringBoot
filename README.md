@@ -2,8 +2,6 @@
 
 
 
-
-
 - ## xmlssm
 
 采用 *.xml 文件配置的 maven web 项目。
@@ -117,6 +115,8 @@ mybatis
 
 多数据源测试类：`SpringBootMybatis/src/test/java/com/ice/MybatisMoreDataSource.java`
 
+
+
 - ## SpringBootJPA
 
 JPA
@@ -124,4 +124,20 @@ JPA
 单一数据源测试类：`SpringBootJPA/src/test/java/com/ice/JPABookDaoTests.java`、`JPAKeyWordTest.java `、`JPACustomTest.java`、`JPACustomTest.java`
 
 多数据源测试类：`SpringBootMybatis/src/test/java/com/ice/MybatisMoreDataSource.java`
+
+
+
+- ## SpringBootRedis
+
+Redis
+
+访问地址：`ip:port/setRedis`、`ip:port/getRedis`
+
+Nginx
+
+访问地址：`ip:port/setSession`、`ip:port/getSession`
+
+MongoDB
+
+测试类：`MongoDBRepositoryTests.java`、`MongoDBTemplateTests.java`
 
