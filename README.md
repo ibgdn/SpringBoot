@@ -137,6 +137,10 @@ Nginx
 
 访问地址：`ip:port/setSession`、`ip:port/getSession`
 
+
+
+- ## SpringBootMongoDB
+
 MongoDB
 
 测试类：`MongoDBRepositoryTests.java`、`MongoDBTemplateTests.java`
