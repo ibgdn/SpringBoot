@@ -145,3 +145,28 @@ MongoDB
 
 测试类：`MongoDBRepositoryTests.java`、`MongoDBTemplateTests.java`
 
+
+
+- ## SpringBootREST
+
+REST
+
+postman 请求获取查询结果。
+
+
+
+- ## SpringBootDevTools
+
+DevTools
+
+postman 请求获取查询结果。
+
+
+
+- ## SpringBootCacheRedis
+  通过 Redis 配置存储数据库缓存操作。
+
+  
+
+- ## SpringBootCacheEhcache
+通过 Ehcache 配置存储数据库缓存操作。
