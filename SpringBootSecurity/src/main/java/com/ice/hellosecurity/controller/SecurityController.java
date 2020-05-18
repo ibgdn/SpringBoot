@@ -12,4 +12,14 @@ public class SecurityController {
     public String security() {
         return "Hello Security.";
     }
+
+    @GetMapping("/admin/hello")
+    public String admin() {
+        return "Admin Hello";
+    }
+
+    @GetMapping("/user/hello")
+    public String user() {
+        return "User Hello";
+    }
 }
