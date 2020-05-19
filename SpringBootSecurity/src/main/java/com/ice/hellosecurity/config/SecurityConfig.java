@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import javax.security.auth.login.CredentialException;
 import javax.servlet.ServletException;
@@ -60,13 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 // 处理登录的 URL
                 .loginProcessingUrl("/doLogin")
+                /** 5.登录表单详细配置*/
                 // 登录页面
                 .loginPage("/login")
                 .usernameParameter("un")
                 .passwordParameter("pw")
                 // 登录成功
                 .successHandler((request, response, authentication) -> {
-                    response.setContentType("application/text;charset=utf-8");
+                    response.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = response.getWriter();
                     Map<Object, Object> map = new HashMap<>();
                     map.put("status", 002);
@@ -75,15 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     writer.flush();
                     writer.close();
                 })
-                .failureHandler(new AuthenticationFailureHandler() {
-                    @Override
-                    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-
-                    }
-                })
                 // 登录失败
                 .failureHandler(((request, response, exception) -> {
-                    response.setContentType("application/text;charset=utf-8");
+                    response.setContentType("application/json;charset=utf-8");
                     PrintWriter writer = response.getWriter();
                     Map<Object, Object> map = new HashMap<>();
                     map.put("status", 104);
@@ -107,6 +103,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 }))
                 // 登录相关的接口直接访问
                 .permitAll()
+                /** 6.注销登录配置*/
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setContentType("application/json;charset=utf-8");
+                    PrintWriter writer = response.getWriter();
+                    Map<Object, Object> map = new HashMap<>();
+                    map.put("status", 200);
+                    map.put("msg", "退出登录成功");
+                    writer.write(new ObjectMapper().writeValueAsString(map));
+                    writer.flush();
+                    writer.close();
+                })
                 .and()
                 // 通过 postman 访问，关闭 csrf 攻击保护
                 .csrf().disable();
