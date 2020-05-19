@@ -22,4 +22,9 @@ public class SecurityController {
     public String user() {
         return "User Hello";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "Please Login.";
+    }
 }
