@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * 7.多个 HttpSecurity
  */
 @Configuration
+// 方法执行前后进行校验
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
 public class MultiSecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -28,7 +31,7 @@ public class MultiSecurityConfig {
 //                .withUser("sec3").password("123456").roles("admin")
                 .withUser("sec3").password("$2a$10$q3LQcqUwhMkylbfeziQH3eWipplZShG6Hudsqxr33o8KCs.zVaiRm").roles("admin")
                 .and()
-                .withUser("sec4").password("789012").roles("user");
+                .withUser("sec4").password("$2a$10$/Ru8IJ/T5.ekNAjyTcYNBe5Eynjb75vNq8ZVyC7C4s1lPkYc9FS2G").roles("user");
     }
 
     @Configuration

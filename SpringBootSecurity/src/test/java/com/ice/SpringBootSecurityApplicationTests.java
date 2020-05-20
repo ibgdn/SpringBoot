@@ -15,6 +15,7 @@ class SpringBootSecurityApplicationTests {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         for (int i = 0; i < 10; i++) {
             System.out.println(bCryptPasswordEncoder.encode("123456"));
+            System.out.println(bCryptPasswordEncoder.encode("789012"));
         }
     }
 
