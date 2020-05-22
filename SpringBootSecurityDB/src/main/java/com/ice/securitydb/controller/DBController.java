@@ -12,4 +12,19 @@ public class DBController {
     public String dbSecurity() {
         return "DB Security.";
     }
+
+    @GetMapping("/adminSecurity")
+    public String admin() {
+        return "DB admin.";
+    }
+
+    @GetMapping("/dbaSecurity")
+    public String dba() {
+        return "DB DBA.";
+    }
+
+    @GetMapping("/userSecurity")
+    public String user() {
+        return "DB user.";
+    }
 }

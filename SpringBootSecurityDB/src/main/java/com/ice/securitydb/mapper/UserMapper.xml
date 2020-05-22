@@ -6,6 +6,6 @@
     </select>
 
     <select id="getUserRoleListById" resultType="com.ice.securitydb.bean.Role">
-        select * from user_role where uid = #{id}
+        select * from role where id in (select rid from user_role where uid = #{id})
     </select>
 </mapper>
