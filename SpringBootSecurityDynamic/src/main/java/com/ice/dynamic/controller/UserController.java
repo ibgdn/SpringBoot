@@ -13,4 +13,19 @@ public class UserController {
     public String dynamic() {
         return "Security Dynamic";
     }
+
+    @GetMapping("/db/dynamic")
+    public String db() {
+        return "Security DB Dynamic";
+    }
+
+    @GetMapping("/admin/dynamic")
+    public String admin() {
+        return "Security Admin Dynamic";
+    }
+
+    @GetMapping("/user/dynamic")
+    public String user() {
+        return "Security User Dynamic";
+    }
 }
