@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+</head>
+<body>
+<input type="button" id="connect" value="创建连接"/>
+<!-- “断开连接”默认不可点击-->
+<input type="button" id="disconnect" value="断开连接" disabled="disabled"/>
+<hr>
+消息内容：<input type="text" id="content"> 目标用户：<input type="text" id="to"> <input type="button" value="发送" id="send">
+<div id="conversation"></div>
+<script>
+    $(function () {
+        // 创建连接的点击事件
+        $("#connect").click(function () {
+            connect();
+        })
+
+        // 创建断开连接的点击事件
+        $("#disconnect").click(function () {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            setConnect(false);
+        })
+
+        // 发送按钮点击事件
+        $("#send").click(function () {
+            // 对应 config 和 controller 的 @MessageMapping
+            stompClient.send("/app/singleChat", {}, JSON.stringify({
+                "to": $("#to").val(),
+                "content": $("#content").val()
+            }));
+        })
+    })
+
+    var stompClient = null;
+
+    // 创建连接
+    function connect() {
+        // 对应 Config 类
+        var sockJS = new SockJS("/webSocketChart");
+        stompClient = Stomp.over(sockJS);
+        // connect 第一个参数优先级（不做设定，传为“{}”)
+        stompClient.connect({}, function (successCallback) {
+            setConnect(true);
+            // 对应 controller 的 @SendTo
+            stompClient.subscribe("/user/queue/singleChat", function (message) {
+                showGreeting(JSON.parse(message.body));
+            })
+        })
+    }
+
+    // 设置按钮是否可以使用，聊天内容是否展示
+    function setConnect(flag) {
+        $("#connect").prop("disabled", flag);
+        $("#disconnect").prop("disabled", !flag);
+        if (flag) {
+            $("#chat").show();
+        } else {
+            $("#chat").hide();
+        }
+    }
+
+    function showGreeting(messageBody) {
+        $("#conversation").append("<div>" + messageBody.from + ": " + messageBody.content + "</div>");
+    }
+</script>
+</body>
+</html>
