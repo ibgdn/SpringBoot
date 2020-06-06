@@ -1,5 +1,8 @@
 package com.ice;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +16,12 @@ import org.thymeleaf.context.Context;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.file.FileSystem;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootTest
 class SpringBootMailApplicationTests {
@@ -88,6 +95,38 @@ class SpringBootMailApplicationTests {
         String process = templateEngine.process("mail-thymeleaf.html", context);
 
         mimeMessageHelper.setText(process, true);
+        mimeMessageHelper.setFrom("发送邮箱地址");
+        mimeMessageHelper.setSentDate(new Date());
+        mimeMessageHelper.setTo("接收邮箱地址");
+        mimeMessageHelper.setCc("抄送邮箱地址");
+        mimeMessageHelper.setBcc("密送邮箱地址");
+
+        javaMailSender.send(mimeMessage);
+    }
+
+
+    // 通过 freemarker 模板发送邮件
+    @Test
+    void sendFreemarker() throws MessagingException, IOException, TemplateException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setSubject("SpringBoot Freemarker 发送测试邮件");
+
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
+        configuration.setClassLoaderForTemplateLoading(this.getClass().getClassLoader(), "templates");
+        Template template = configuration.getTemplate("mail-freemarker.ftl");
+
+        Map<String, Object> map = new HashMap<>(5);
+        map.put("username", "JAVA");
+        map.put("position", "Java 工程师");
+        map.put("joblevel", "高级工程师");
+        map.put("dep", "产品研发部");
+        map.put("salary", 99999);
+
+        StringWriter stringWriter = new StringWriter();
+        template.process(map, stringWriter);
+        mimeMessageHelper.setText(stringWriter.toString(), true);
+
         mimeMessageHelper.setFrom("发送邮箱地址");
         mimeMessageHelper.setSentDate(new Date());
         mimeMessageHelper.setTo("接收邮箱地址");
