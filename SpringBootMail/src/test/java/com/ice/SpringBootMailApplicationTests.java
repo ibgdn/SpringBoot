@@ -7,6 +7,8 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -67,4 +69,31 @@ class SpringBootMailApplicationTests {
         javaMailSender.send(mimeMessage);
     }
 
+    // 通过 thymeleaf 模板发送邮件
+    @Autowired
+    TemplateEngine templateEngine;
+
+    @Test
+    void sendThymeleaf() throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setSubject("SpringBoot Thymeleaf 发送测试邮件");
+
+        Context context = new Context();
+        context.setVariable("username", "JAVA");
+        context.setVariable("position", "Java 工程师");
+        context.setVariable("joblevel", "高级工程师");
+        context.setVariable("dep", "产品研发部");
+        context.setVariable("salary", 99999);
+        String process = templateEngine.process("mail-thymeleaf.html", context);
+
+        mimeMessageHelper.setText(process, true);
+        mimeMessageHelper.setFrom("发送邮箱地址");
+        mimeMessageHelper.setSentDate(new Date());
+        mimeMessageHelper.setTo("接收邮箱地址");
+        mimeMessageHelper.setCc("抄送邮箱地址");
+        mimeMessageHelper.setBcc("密送邮箱地址");
+
+        javaMailSender.send(mimeMessage);
+    }
 }
