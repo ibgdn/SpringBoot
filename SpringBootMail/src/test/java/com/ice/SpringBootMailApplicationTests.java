@@ -3,6 +3,7 @@ package com.ice;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -10,6 +11,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.nio.file.FileSystem;
 import java.util.Date;
 
 @SpringBootTest
@@ -45,6 +47,23 @@ class SpringBootMailApplicationTests {
         mimeMessageHelper.setCc("抄送邮箱地址");
         mimeMessageHelper.setBcc("密送邮箱地址");
         mimeMessageHelper.addAttachment("附件图片", new File("E:\\cache\\desktop\\171744c434465b69.png"));
+        javaMailSender.send(mimeMessage);
+    }
+
+    // 发送直接展示图片的邮件
+    @Test
+    void sendPicture() throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+        mimeMessageHelper.setSubject("SpringBoot 图片测试邮件");
+        mimeMessageHelper.setText("通过 SpringBoot Mail 发送的图片测试邮件。<br>第一张图片：<img src='cid:picture1'/>第二张图片：<img src='cid:picture2'/>", true);
+        mimeMessageHelper.setFrom("发送邮箱地址");
+        mimeMessageHelper.setSentDate(new Date());
+        mimeMessageHelper.setTo("接收邮箱地址");
+        mimeMessageHelper.setCc("抄送邮箱地址");
+        mimeMessageHelper.setBcc("密送邮箱地址");
+        mimeMessageHelper.addInline("picture1", new FileSystemResource(new File("E:\\cache\\desktop\\171744c434465b69.png")));
+        mimeMessageHelper.addInline("picture2", new FileSystemResource(new File("E:\\cache\\desktop\\DTJZGNP.jpg")));
         javaMailSender.send(mimeMessage);
     }
 
